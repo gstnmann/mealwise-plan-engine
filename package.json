@@ -1,0 +1,57 @@
+{
+  "name": "mealwise-plan-engine",
+  "version": "1.0.0",
+  "description": "Complete implementation guide for the Mealwise Meal Plan Generation Engine",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "supabase start",
+    "build": "tsc",
+    "deploy": "supabase functions deploy",
+    "deploy:plan-generator": "supabase functions deploy plan-generator",
+    "deploy:ai-gateway": "supabase functions deploy ai-gateway",
+    "deploy:nutrition-validator": "supabase functions deploy nutrition-validator",
+    "test": "node scripts/test-generation.js",
+    "seed:usda": "node scripts/seed-usda-data.js",
+    "db:setup": "psql -h $SUPABASE_DB_HOST -U postgres -d postgres -f database/schema-additions.sql",
+    "db:policies": "psql -h $SUPABASE_DB_HOST -U postgres -d postgres -f database/policies.sql",
+    "lint": "eslint . --ext .ts,.js",
+    "format": "prettier --write .",
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.39.0",
+    "uuid": "^9.0.1",
+    "zod": "^3.22.4",
+    "csv-parse": "^5.5.2",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.3.2",
+    "eslint": "^8.55.0",
+    "prettier": "^3.1.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0"
+  },
+  "keywords": [
+    "meal-planning",
+    "ai",
+    "claude",
+    "nutrition",
+    "supabase",
+    "typescript",
+    "spotify",
+    "usda"
+  ],
+  "author": "Mealwise Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gstnmann/mealwise-plan-engine.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
